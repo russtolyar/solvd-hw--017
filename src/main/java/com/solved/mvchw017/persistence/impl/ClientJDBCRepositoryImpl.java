@@ -36,7 +36,7 @@ public class ClientJDBCRepositoryImpl implements ClientRepository {
         }
     }
 
-      {
+    public void linkClientDrink(Long clientId, Long drinkId) {
         Connection connection = CONNECTION_POOL.getConnection();
         String sqlOperation = "insert into Client_drinks (client_id, drink_id) values (?,?)";
         try (
