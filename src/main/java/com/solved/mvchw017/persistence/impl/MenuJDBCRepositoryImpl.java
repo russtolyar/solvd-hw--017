@@ -9,17 +9,18 @@ import java.sql.*;
 public class MenuJDBCRepositoryImpl implements MenuRepository {
 
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
+
     @Override
     public Menu create(Menu menu, Long restaurantId) {
 
         Connection connection = CONNECTION_POOL.getConnection();
 
-        String sqlOperation = "insert into Menu (restaurant_id, type) values (?,?)";
+        String sqlOperation = "insert into Menues (restaurant_id, type) values (?,?)";
         try (
                 PreparedStatement preparedStatement
-                        = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)){
-            preparedStatement.setLong(1,restaurantId);
-            preparedStatement.setString(2,menu.getType());
+                        = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setLong(1, restaurantId);
+            preparedStatement.setString(2, menu.getType());
 
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -28,7 +29,7 @@ public class MenuJDBCRepositoryImpl implements MenuRepository {
             }
         } catch (SQLException e) {
             throw new RuntimeException(" Cannot create the Menu   ", e);
-        }finally {
+        } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
 

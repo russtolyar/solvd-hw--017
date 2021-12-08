@@ -32,15 +32,12 @@ public class ConnectionPool {
     }
 
     private Connection createConnection() {
-//        Connection connection;
         try {
-//            connection =
             return
                     DriverManager.getConnection(Config.URL, Config.USER, Config.PASSWORD);
         } catch (SQLException e) {
             throw new RuntimeException(" No connection!!!   ", e);
         }
-//        return connection;
     }
 
     public static ConnectionPool getInstance() {
@@ -51,19 +48,10 @@ public class ConnectionPool {
     }
 
     public Connection getConnection() {
-//        LOGGER.debug("get My Connection");
-//        if (connections.size() == 0) {
-//            try {
-//                Thread.currentThread().join();
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
         return connections.remove(0);
     }
 
     public void releaseConnection(Connection connection) {
-//        LOGGER.debug("Release Connection");
         connections.add(connection);
     }
 

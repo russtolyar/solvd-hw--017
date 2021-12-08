@@ -7,7 +7,7 @@ public class Menu {
     private Long id;
     private String type;
     private List<Drink> drinks;
-    private List<Food> dishes;
+    private List<Dish> dishes;
 
     public Long getId() {
         return id;
@@ -33,11 +33,11 @@ public class Menu {
         this.drinks = drinks;
     }
 
-    public List<Food> getDishes() {
+    public List<Dish> getDishes() {
         return dishes;
     }
 
-    public void setDishes(List<Food> dishes) {
+    public void setDishes(List<Dish> dishes) {
         this.dishes = dishes;
     }
 }

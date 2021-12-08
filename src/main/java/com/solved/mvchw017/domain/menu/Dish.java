@@ -1,9 +1,10 @@
 package com.solved.mvchw017.domain.menu;
 
-public class Food {
+public class Dish {
 
     private Long id;
     private String name;
+
     private String type;
 
     public Long getId() {

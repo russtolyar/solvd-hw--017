@@ -18,8 +18,8 @@ public class KitchenJDBCRepositoryImpl implements KitchenRepository {
         String sqlOperation = "insert into Kitchens (restaurant_id) values (?)";
         try (
                 PreparedStatement preparedStatement
-                        = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)){
-            preparedStatement.setLong(1,restaurantId);
+                        = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setLong(1, restaurantId);
 
 
             preparedStatement.executeUpdate();
@@ -29,7 +29,7 @@ public class KitchenJDBCRepositoryImpl implements KitchenRepository {
             }
         } catch (SQLException e) {
             throw new RuntimeException(" Cannot create the Kitchen   ", e);
-        }finally {
+        } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
 

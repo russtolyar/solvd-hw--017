@@ -16,7 +16,6 @@ public class PassportServiceImpl implements PassportService {
     public Passport create(Passport passport) {
         passport.setId(null);
         passportRepository.create(passport);
-
         return passport;
     }
 }

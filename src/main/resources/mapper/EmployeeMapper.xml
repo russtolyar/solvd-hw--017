@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.solved.mvchw017.persistence.EmployeeRepository">
+
+	<insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+		insert into Employees (passport_id, address_id, first_name, last_name, position, department)
+		values (#{passportId}, ${addressId}, ${employee.first_name}, ${employee.last_name}, ${employee.position},
+		        ${employee.department})
+	</insert>
+
+	<select id="findAll" resultMap="">
+
+		select p.id as passport_id p.number as passport_number
+		p.expire_date as passport_date_expire e.id as employee_id
+		e.name as employee_name k.id as kitchen_id
+		a.city as address_city
+		from Passports p
+			     left join Employees e
+			               on p.id = e.passport_id
+			     left join Kitchen_employees ke
+			               on e.id = ke.employee_id
+			     left join Kitchens k
+			               on k.id = ke.kitchen_id
+			     right join Address absolute
+		on a.id = e.address_id
+
+	</select>
+
+	<resultMap id="EmployeeResultMap" type="com.solved.mvchw017.domaim.Employee" autoMapping="false">
+		<result property="id" column="employee_id"/>
+		<result property="passport_id" column="passportId"/>
+		<result property="address_id" column="addressId"/>
+		<result property="first_name" column="employee.first_name"/>
+		<result property="last_name" column="employee.last_name"/>
+		<result property="position" column="employee.position"/>
+		<result property="department" column="employee.department"/>
+<association property="passport" resultMap="com.solved.mvchw017.persistence.PassportRepository.PassportResultMap"/>
+
+	</resultMap>
+
+	<!--	<select id="findAll" resultMap="">-->
+	<!--		select-->
+	<!--			p.id as passport_ID p.number as passport_number p.expire_date as passport_date_expire e.id as employee_ID-->
+	<!--		e.name as employee_name k.id as kitchen_id from Passports p left join Employees e-->
+	<!--			                                                                                              on p.id = e.passport_id-->
+	<!--		                                                            left join Kitchen_employees ke-->
+	<!--		                                                                      on e.id = ke.employee_id-->
+	<!--		                                                            left join Kitchens k-->
+	<!--		                                                                      on k.id = ke.kitchen_id-->
+
+	<!--	</select>-->
+
+	<!--	<resultMap id="PassportResultMap" type="com/solved/mvchw017/domain/Passport.java" autoMapping="false">-->
+	<!--		<id property="id" column="passport_ID"/>-->
+	<!--		<result property="number" column="passport_number"/>-->
+	<!--		<result property="expire_date" column="passport_date_expire"/>-->
+	<!--	</resultMap>-->
+</mapper>

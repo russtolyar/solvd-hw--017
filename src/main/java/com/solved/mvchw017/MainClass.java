@@ -4,24 +4,21 @@ import com.solved.mvchw017.domain.*;
 import com.solved.mvchw017.domain.department.Kitchen;
 import com.solved.mvchw017.domain.department.Product;
 import com.solved.mvchw017.domain.department.Staff;
+import com.solved.mvchw017.domain.menu.Dish;
 import com.solved.mvchw017.domain.menu.Drink;
-import com.solved.mvchw017.domain.menu.Food;
 import com.solved.mvchw017.domain.menu.Menu;
-import com.solved.mvchw017.persistence.impl.RestaurantJDBCRepositoryImpl;
-import com.solved.mvchw017.service.ClientService;
-import com.solved.mvchw017.service.MenuService;
-import com.solved.mvchw017.service.RestaurantService;
-import com.solved.mvchw017.service.impl.ClientServiceImpl;
-import com.solved.mvchw017.service.impl.MenuServiceImpl;
-import com.solved.mvchw017.service.impl.RestaurantServiceImpl;
+import com.solved.mvchw017.service.*;
+import com.solved.mvchw017.service.impl.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 public class MainClass {
     public static void main(String[] args) {
+
         Address addressOne = new Address();
         addressOne.setCity("Minsk");
         addressOne.setStreet("Zhukov");
@@ -35,46 +32,46 @@ public class MainClass {
         addressTwo.setNumberFlat(5);
 
         Address addressThree = new Address();
-        addressTwo.setCity("");
-        addressTwo.setStreet("Zhukov");
-        addressTwo.setNumberHouse(8);
-        addressTwo.setNumberFlat(9);
+        addressThree.setCity("");
+        addressThree.setStreet("Zhukov");
+        addressThree.setNumberHouse(3);
+        addressThree.setNumberFlat(9);
 
         Address addressFour = new Address();
-        addressTwo.setCity("Minsk");
-        addressTwo.setStreet("Krasnaya");
-        addressTwo.setNumberHouse(9);
-        addressTwo.setNumberFlat(90);
+        addressFour.setCity("Minsk");
+        addressFour.setStreet("Krasnaya");
+        addressFour.setNumberHouse(4);
+        addressFour.setNumberFlat(90);
 
         Address addressFive = new Address();
-        addressTwo.setCity("Zaslavl");
-        addressTwo.setStreet("Dachnaya");
-        addressTwo.setNumberHouse(4);
-        addressTwo.setNumberFlat(50);
+        addressFive.setCity("Zaslavl");
+        addressFive.setStreet("Dachnaya");
+        addressFive.setNumberHouse(5);
+        addressFive.setNumberFlat(50);
 
         Address addressSix = new Address();
-        addressTwo.setCity("Drozdy");
-        addressTwo.setStreet("Levaya");
-        addressTwo.setNumberHouse(5);
-        addressTwo.setNumberFlat(30);
+        addressSix.setCity("Drozdy");
+        addressSix.setStreet("Levaya");
+        addressSix.setNumberHouse(6);
+        addressSix.setNumberFlat(30);
 
         Address addressSeven = new Address();
-        addressTwo.setCity("Minsk");
-        addressTwo.setStreet("Centr");
-        addressTwo.setNumberHouse(6);
-        addressTwo.setNumberFlat(55);
+        addressSeven.setCity("Minsk");
+        addressSeven.setStreet("Centr");
+        addressSeven.setNumberHouse(7);
+        addressSeven.setNumberFlat(55);
 
         Address addressEight = new Address();
-        addressTwo.setCity("Minsk");
-        addressTwo.setStreet("Grusheva");
-        addressTwo.setNumberHouse(7);
-        addressTwo.setNumberFlat(22);
+        addressEight.setCity("Minsk");
+        addressEight.setStreet("Grusheva");
+        addressEight.setNumberHouse(8);
+        addressEight.setNumberFlat(22);
 
         Address addressNine = new Address();
-        addressTwo.setCity("Minsk");
-        addressTwo.setStreet("Usataya");
-        addressTwo.setNumberHouse(8);
-        addressTwo.setNumberFlat(47);
+        addressNine.setCity("Minsk");
+        addressNine.setStreet("Usataya");
+        addressNine.setNumberHouse(9);
+        addressNine.setNumberFlat(47);
 
         Drink drinkOne = new Drink();
         drinkOne.setName("MilkShake");
@@ -108,101 +105,90 @@ public class MainClass {
         drinkEight.setName("Vino");
         drinkEight.setAlcoholic(true);
 
-        Food dishOne = new Food();
+        Dish dishOne = new Dish();
         dishOne.setName("Vegetabls");
         dishOne.setType("Vegan");
 
-        Food dishTwo = new Food();
-        dishOne.setName("Fried bea");
-        dishOne.setType("Normal");
+        Dish dishTwo = new Dish();
+        dishTwo.setName("Fried beaf");
+        dishTwo.setType("Normal");
 
-        Food dishThree = new Food();
-        dishOne.setName("Boiled potato");
-        dishOne.setType("Vegan");
+        Dish dishThree = new Dish();
+        dishThree.setName("Boiled potato");
+        dishThree.setType("Vegan");
 
-        Food dishFour = new Food();
-        dishOne.setName("Fried eggs");
-        dishOne.setType("Vegetarian");
+        Dish dishFour = new Dish();
+        dishFour.setName("Fried eggs");
+        dishFour.setType("Vegetarian");
 
-        Food dishFive = new Food();
-        dishOne.setName("Pizza");
-        dishOne.setType("Vegan");
+        Dish dishFive = new Dish();
+        dishFive.setName("Pizza");
+        dishFive.setType("Vegan");
 
-        Food dishSix = new Food();
-        dishOne.setName("Pizza with sausages");
-        dishOne.setType("Normal");
+        Dish dishSix = new Dish();
+        dishSix.setName("Pizza with sausages");
+        dishSix.setType("Normal");
 
-        Food dishSeven = new Food();
-        dishOne.setName("Baked chiken");
-        dishOne.setType("Normal");
+        Dish dishSeven = new Dish();
+        dishSeven.setName("Baked chiken");
+        dishSeven.setType("Normal");
 
         Client clientOne = new Client();
         clientOne.setName("Olya");
-        clientOne.setAddress(addressTwo);
+        clientOne.setAddress(addressOne);
         clientOne.setDob(LocalDateTime.of(2000, 10, 10, 00, 00));
 
         Client clientTwo = new Client();
         clientTwo.setName("Tanya");
-        clientTwo.setAddress(addressFour);
+        clientTwo.setAddress(addressTwo);
         clientTwo.setDob(LocalDateTime.of(1995, 11, 11, 00, 00));
 
         Client clientThree = new Client();
         clientThree.setName("Ira");
-        clientThree.setAddress(addressSix);
+        clientThree.setAddress(addressThree);
         clientThree.setDob(LocalDateTime.of(1990, 12, 12, 00, 00));
 
         Client clientFour = new Client();
         clientFour.setName("Dima");
-        clientFour.setAddress(addressEight);
+        clientFour.setAddress(addressFour);
         clientFour.setDob(LocalDateTime.of(2005, 5, 5, 00, 00));
 
-        List<Client> clients = Arrays.asList(clientOne, clientTwo, clientThree, clientFour);
-
-//        ArrayList<Drink> drinksSetOne = new ArrayList<>();
-//        drinksSetOne.add(drinkTwo);
-//        clientOne.setDrinks(drinksSetOne);
-//
-//        ArrayList<Food> dishesSetOne = new ArrayList();
-//        dishesSetOne.add(dishOne);
-//        dishesSetOne.add(dishFour);
-//        clientOne.setDishes(dishesSetOne);
+//        List<Client> clients = Arrays.asList(clientOne, clientTwo, clientThree, clientFour);
 
         List<Drink> drinksMenu = Arrays.asList(drinkOne, drinkTwo, drinkThree, drinkFour, drinkFive, drinkSix, drinkSeven, drinkEight);
-
-        List<Food> foodMenu = Arrays.asList(dishOne, dishTwo, dishThree, dishFour, dishFive, dishSix, dishSeven);
+        List<Dish> dishesMenu = Arrays.asList(dishOne, dishTwo, dishThree, dishFour, dishFive, dishSix, dishSeven);
 
         Menu menu = new Menu();
         menu.setType("Season-menu");
-        menu.setDishes(foodMenu);
+        menu.setDishes(dishesMenu);
         menu.setDrinks(drinksMenu);
 
-
         Passport passportOne = new Passport();
-        passportOne.setNumber("1001");
+        passportOne.setNumber("1001" + UUID.randomUUID());
         passportOne.setExpiredAt(LocalDateTime.of(2000, 11, 11, 00, 00));
 
         Passport passportTwo = new Passport();
-        passportTwo.setNumber("1002");
+        passportTwo.setNumber("1002" + UUID.randomUUID());
         passportTwo.setExpiredAt(LocalDateTime.of(2026, 05, 02, 00, 00));
 
         Passport passportThree = new Passport();
-        passportThree.setNumber("1003");
+        passportThree.setNumber("1003" + UUID.randomUUID());
         passportThree.setExpiredAt(LocalDateTime.of(2027, 8, 20, 00, 00));
 
         Passport passportFour = new Passport();
-        passportFour.setNumber("1004");
+        passportFour.setNumber("1004" + UUID.randomUUID());
         passportFour.setExpiredAt(LocalDateTime.of(2028, 7, 14, 00, 00));
 
         Passport passportFive = new Passport();
-        passportFive.setNumber("1005");
+        passportFive.setNumber("1005" + UUID.randomUUID());
         passportFive.setExpiredAt(LocalDateTime.of(2029, 3, 15, 0, 0));
 
         Passport passportSix = new Passport();
-        passportSix.setNumber("1006");
+        passportSix.setNumber("1006" + UUID.randomUUID());
         passportSix.setExpiredAt(LocalDateTime.of(2022, 10, 29, 0, 0));
 
         Passport passportSeven = new Passport();
-        passportSeven.setNumber("1007");
+        passportSeven.setNumber("1007" + UUID.randomUUID());
         passportSeven.setExpiredAt(LocalDateTime.of(2023, 11, 30, 00, 00));
 
         Employee employeeOne = new Employee();
@@ -210,7 +196,7 @@ public class MainClass {
         employeeOne.setLastName("Ilin");
         employeeOne.setPosition("Chif");
         employeeOne.setDepartment("Kitchen");
-        employeeOne.setPassport(passportTwo);
+        employeeOne.setPassport(passportOne);
         employeeOne.setAddress(addressFive);
 
         Employee employeeTwo = new Employee();
@@ -218,8 +204,8 @@ public class MainClass {
         employeeTwo.setLastName("Ivanov");
         employeeTwo.setPosition("Cook");
         employeeTwo.setDepartment("Kitchen");
-        employeeTwo.setPassport(passportOne);
-        employeeTwo.setAddress(addressThree);
+        employeeTwo.setPassport(passportTwo);
+        employeeTwo.setAddress(addressSix);
 
         Employee employeeThree = new Employee();
         employeeThree.setName("Petr");
@@ -234,15 +220,15 @@ public class MainClass {
         employeeFour.setLastName("Vasin");
         employeeFour.setPosition("Boss");
         employeeFour.setDepartment("Administration");
-        employeeFour.setPassport(passportFive);
-        employeeFour.setAddress(addressOne);
+        employeeFour.setPassport(passportFour);
+        employeeFour.setAddress(addressEight);
 
         Employee employeeFive = new Employee();
         employeeFive.setName("Sidr");
         employeeFive.setLastName("Sodorov");
         employeeFive.setPosition("Cleaner");
         employeeFive.setDepartment("Kitchen");
-        employeeFive.setPassport(passportFour);
+        employeeFive.setPassport(passportFive);
         employeeFive.setAddress(addressNine);
 
         List<Employee> employees = Arrays.asList(employeeOne, employeeTwo, employeeThree, employeeFour, employeeFive);
@@ -286,24 +272,24 @@ public class MainClass {
         staffOne.setProducts(productsFrige);
 
         Staff staffTwo = new Staff();
-        staffOne.setName("Box");
-        staffOne.setType("Equipment");
-        staffOne.setProducts(productsBox);
+        staffTwo.setName("Box");
+        staffTwo.setType("Equipment");
+        staffTwo.setProducts(productsBox);
 
         Staff staffThree = new Staff();
-        staffOne.setName("Table");
-        staffOne.setType("Furniture");
-        staffOne.setProducts(null);
+        staffThree.setName("Table");
+        staffThree.setType("Furniture");
+        staffThree.setProducts(null);
 
         Staff staffFour = new Staff();
-        staffOne.setName("Knife");
-        staffOne.setType("Tool");
-        staffOne.setProducts(productsFrige);
+        staffFour.setName("Knife");
+        staffFour.setType("Tool");
+        staffFour.setProducts(null);
 
         Staff staffFive = new Staff();
-        staffOne.setName("Mixer");
-        staffOne.setType("Tool");
-        staffOne.setProducts(productsFrige);
+        staffFive.setName("Mixer");
+        staffFive.setType("Tool");
+        staffFive.setProducts(null);
 
         List<Staff> staffList = Arrays.asList(staffOne, staffTwo, staffThree, staffFour, staffFive);
 
@@ -315,40 +301,40 @@ public class MainClass {
         restaurantFalcone.setName("Falcone");
         restaurantFalcone.setDateOfFoundation(LocalDateTime.of(2020, 01, 01, 00, 00));
         restaurantFalcone.setMenu(menu);
-        restaurantFalcone.setClients(clients);
+
         restaurantFalcone.setKitchen(kitchen);
 
         Restaurant restaurantBelaRossa = new Restaurant();
-        restaurantFalcone.setName("Bela Rossa");
-        restaurantFalcone.setDateOfFoundation(LocalDateTime.of(2020, 8, 9, 00, 00));
-
-//        new RestaurantJDBCRepositoryImpl().create(restaurantFalcone);
-//        new AddressRepositoryImpl().create(addressOne);
+        restaurantBelaRossa.setName("Bela Rossa");
+        restaurantBelaRossa.setDateOfFoundation(LocalDateTime.of(2020, 8, 9, 00, 00));
+        restaurantBelaRossa.setMenu(null);
+        restaurantBelaRossa.setKitchen(null);
 
         RestaurantService restaurantService = new RestaurantServiceImpl();
         restaurantService.create(restaurantFalcone);
-        restaurantService.create(restaurantBelaRossa);
+        RestaurantService restaurantService1 = new RestaurantServiceImpl();
+        restaurantService1.create(restaurantBelaRossa);
 
-
-        List<Food> clientOneFood = Arrays.asList(restaurantFalcone.getMenu().getDishes().get(0),
+        List<Dish> clientOneDish = Arrays.asList(restaurantFalcone.getMenu().getDishes().get(0),
                 restaurantFalcone.getMenu().getDishes().get(3));
-        clientOne.setDishes(clientOneFood);
+        clientOne.setDishes(clientOneDish);
 
         List<Drink> clientOneDrink = Arrays.asList(restaurantFalcone.getMenu().getDrinks().get(2),
                 restaurantFalcone.getMenu().getDrinks().get(5));
         clientOne.setDrinks(clientOneDrink);
 
-        List<Food> clientTwoFood = Arrays.asList(restaurantFalcone.getMenu().getDishes().get(0),
-                restaurantFalcone.getMenu().getDishes().get(3));
-        clientOne.setDishes(clientOneFood);
-        clientTwo.setDishes(clientTwoFood);
+        List<Dish> clientTwoDish = Arrays.asList(restaurantFalcone.getMenu().getDishes().get(1),
+                restaurantFalcone.getMenu().getDishes().get(4));
+        clientOne.setDishes(clientOneDish);
+        clientTwo.setDishes(clientTwoDish);
 
-        List<Drink> clientTwoDrink = Arrays.asList(restaurantFalcone.getMenu().getDrinks().get(2),
-                restaurantFalcone.getMenu().getDrinks().get(5));
+        List<Drink> clientTwoDrink = Arrays.asList(restaurantFalcone.getMenu().getDrinks().get(0),
+                restaurantFalcone.getMenu().getDrinks().get(3));
         clientTwo.setDrinks(clientTwoDrink);
-
 
         ClientService clientService = new ClientServiceImpl();
         clientService.create(clientOne);
+        clientService.create(clientTwo);
+
     }
 }

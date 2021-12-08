@@ -1,10 +1,10 @@
 package com.solved.mvchw017.persistence;
 
-import com.solved.mvchw017.domain.department.Kitchen;
 import com.solved.mvchw017.domain.department.Staff;
+import org.apache.ibatis.annotations.Param;
 
 public interface StaffRepository {
 
-    void create(Staff staff, Long kitchenId);
+    void create(@Param("staff") Staff staff, @Param("kitchenId") Long kitchenId);
 
 }
