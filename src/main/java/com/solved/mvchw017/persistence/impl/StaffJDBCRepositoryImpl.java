@@ -18,9 +18,9 @@ public class StaffJDBCRepositoryImpl implements StaffRepository {
         String sqlOperation = "insert into Staff (kitchen_id,name, type) values (?,?,?)";
         try (
                 PreparedStatement preparedStatement
-                        = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)){
-            preparedStatement.setLong(1,kitchenId);
-            preparedStatement.setString(2,staff.getName());
+                        = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setLong(1, kitchenId);
+            preparedStatement.setString(2, staff.getName());
             preparedStatement.setString(3, staff.getType());
 
             preparedStatement.executeUpdate();
@@ -30,7 +30,7 @@ public class StaffJDBCRepositoryImpl implements StaffRepository {
             }
         } catch (SQLException e) {
             throw new RuntimeException(" Cannot create the Staff   ", e);
-        }finally {
+        } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
 

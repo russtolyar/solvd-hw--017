@@ -1,7 +1,5 @@
 package com.solved.mvchw017.domain;
 
-
-
 import com.solved.mvchw017.domain.department.Kitchen;
 import com.solved.mvchw017.domain.menu.Menu;
 
@@ -9,7 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Restaurant {//!!!!!
+public class Restaurant {
 
     private Long id;
     private String name;

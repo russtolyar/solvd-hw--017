@@ -16,12 +16,12 @@ public class AddressJDBCRepositoryImpl implements AddressRepository {
         Connection connection = CONNECTION_POOL.getConnection();
         String sqlOperation = "insert into Addresses(city, street, house, flat) values(?,?,?,?) ";
         try (
-            PreparedStatement preparedStatement
-                    = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)){
-            preparedStatement.setString(1,address.getCity());
-            preparedStatement.setString(2,address.getStreet());
-            preparedStatement.setInt(3,address.getNumberHouse());
-            preparedStatement.setInt(4,address.getNumberFlat());
+                PreparedStatement preparedStatement
+                        = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, address.getCity());
+            preparedStatement.setString(2, address.getStreet());
+            preparedStatement.setInt(3, address.getNumberHouse());
+            preparedStatement.setInt(4, address.getNumberFlat());
 
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -30,7 +30,7 @@ public class AddressJDBCRepositoryImpl implements AddressRepository {
             }
         } catch (SQLException e) {
             throw new RuntimeException(" Cannot create Address ", e);
-        }finally {
+        } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
 

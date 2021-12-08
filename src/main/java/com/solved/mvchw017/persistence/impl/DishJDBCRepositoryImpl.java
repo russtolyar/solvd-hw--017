@@ -1,36 +1,36 @@
 package com.solved.mvchw017.persistence.impl;
 
-import com.solved.mvchw017.domain.menu.Food;
+import com.solved.mvchw017.domain.menu.Dish;
 import com.solved.mvchw017.persistence.ConnectionPool;
-import com.solved.mvchw017.persistence.DishesRepository;
+import com.solved.mvchw017.persistence.DishRepository;
 
 import java.sql.*;
 
-public class DishesJDBCRepositoryImpl implements DishesRepository {
+public class DishJDBCRepositoryImpl implements DishRepository {
 
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
     @Override
-    public void create(Food food, Long menuId) {
+    public void create(Dish dish, Long menuId) {
 
         Connection connection = CONNECTION_POOL.getConnection();
 
         String sqlOperation = "insert into Dishes (menu_id, name, type) values (?,?,?)";
         try (
                 PreparedStatement preparedStatement
-                        = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)){
+                        = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setLong(1, menuId);
-            preparedStatement.setString(2, food.getName());
-            preparedStatement.setString(3, food.getType());
+            preparedStatement.setString(2, dish.getName());
+            preparedStatement.setString(3, dish.getType());
 
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             while (resultSet.next()) {
-                food.setId(resultSet.getLong(1));
+                dish.setId(resultSet.getLong(1));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(" Cannot create the Food   ", e);
-        }finally {
+            throw new RuntimeException(" Cannot create the Dish   ", e);
+        } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
 

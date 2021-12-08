@@ -18,7 +18,7 @@ public class DrinkJDBCRepositoryImpl implements DrinkRepository {
         String sqlOperation = "insert into Drinks (menu_id, name, isAlcoholic) values (?,?,?)";
         try (
                 PreparedStatement preparedStatement
-                        = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)){
+                        = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setLong(1, menuId);
             preparedStatement.setString(2, drink.getName());
             preparedStatement.setBoolean(3, drink.isAlcoholic());
@@ -30,7 +30,7 @@ public class DrinkJDBCRepositoryImpl implements DrinkRepository {
             }
         } catch (SQLException e) {
             throw new RuntimeException(" Cannot create the Drink   ", e);
-        }finally {
+        } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
 

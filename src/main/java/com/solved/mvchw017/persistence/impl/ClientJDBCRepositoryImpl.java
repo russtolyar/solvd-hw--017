@@ -8,12 +8,7 @@ import java.sql.*;
 
 public class ClientJDBCRepositoryImpl implements ClientRepository {
 
-
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
-
-    public void print() {
-        System.out.println("Print is working");
-    }
 
     public void linkClientDish(Long clientId, Long dishId) {
         Connection connection = CONNECTION_POOL.getConnection();
@@ -25,10 +20,6 @@ public class ClientJDBCRepositoryImpl implements ClientRepository {
             preparedStatement.setLong(2, dishId);
 
             preparedStatement.executeUpdate();
-            ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            while (resultSet.next()) {
-                cl.setId(resultSet.getLong(1));
-            }
         } catch (SQLException e) {
             throw new RuntimeException(" Cannot create the Client_Dishes connection   ", e);
         } finally {
@@ -46,10 +37,6 @@ public class ClientJDBCRepositoryImpl implements ClientRepository {
             preparedStatement.setLong(2, drinkId);
 
             preparedStatement.executeUpdate();
-            ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            while (resultSet.next()) {
-                Client_drinks.setId(resultSet.getLong(1));
-            }
         } catch (SQLException e) {
             throw new RuntimeException(" Cannot create the Client_Drinks connection   ", e);
         } finally {
@@ -62,7 +49,7 @@ public class ClientJDBCRepositoryImpl implements ClientRepository {
 
         Connection connection = CONNECTION_POOL.getConnection();
 
-        String sqlOperation = "insert into Client (address_id, name, dob) values (?,?,?)";
+        String sqlOperation = "insert into Clients (address_id, name, dob) values (?,?,?)";
         try (
                 PreparedStatement preparedStatement
                         = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)) {
@@ -76,11 +63,9 @@ public class ClientJDBCRepositoryImpl implements ClientRepository {
                 client.setId(resultSet.getLong(1));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(" Cannot create the Client   ", e);
+            throw new RuntimeException(" Cannot create the Client   " + e.getMessage(), e);
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-
-
     }
 }

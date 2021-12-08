@@ -1,8 +1,9 @@
 package com.solved.mvchw017.domain;
 
 
+import com.solved.mvchw017.domain.menu.Dish;
 import com.solved.mvchw017.domain.menu.Drink;
-import com.solved.mvchw017.domain.menu.Food;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,7 +16,7 @@ public class Client {
     private LocalDateTime dob;
     private Address address;
     private List<Drink> drinks;
-    private List<Food> dishes;
+    private List<Dish> dishes;
 
     public Long getId() {
         return id;
@@ -33,11 +34,11 @@ public class Client {
         this.drinks = drinks;
     }
 
-    public List<Food> getDishes() {
+    public List<Dish> getDishes() {
         return dishes;
     }
 
-    public void setDishes(List<Food> dishes) {
+    public void setDishes(List<Dish> dishes) {
         this.dishes = dishes;
     }
 

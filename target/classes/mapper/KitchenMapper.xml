@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solved.mvchw017.persistence.KitchenRepository">
+
+	<insert id="create" keyColumn="kitchen.id" keyProperty="id" useGeneratedKeys="true">
+		insert into Kitchens (restaurant_id) values (${restaurantId})
+
+	</insert>
+
+	<resultMap id="KitchenResultMap" type="com.solved.mvchw017.domain.Kitchen" autoMapping="false">
+		<result property="id" column="kitchen_id"/>
+		<result property="restaurant_id" column="restaurantId"/>
+
+	</resultMap>
+</mapper>

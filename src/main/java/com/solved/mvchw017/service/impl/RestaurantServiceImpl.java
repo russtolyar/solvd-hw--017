@@ -25,9 +25,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     public RestaurantServiceImpl() {
         this.restaurantRepository = new RestaurantJDBCRepositoryImpl();
-        this.menuService = null;
-        this.clientService = null;
-        this.kitchenService = null;
+        this.menuService = new MenuServiceImpl();
+        this.clientService = new ClientServiceImpl();
+        this.kitchenService = new KitchenServiceImpl();
     }
 
     @Override

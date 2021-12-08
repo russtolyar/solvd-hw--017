@@ -5,6 +5,7 @@ import com.solved.mvchw017.persistence.ConnectionPool;
 import com.solved.mvchw017.persistence.PassportRepository;
 
 import java.sql.*;
+import java.util.List;
 
 public class PassportJDBCRepositoryImpl implements PassportRepository {
 
@@ -15,11 +16,11 @@ public class PassportJDBCRepositoryImpl implements PassportRepository {
 
         Connection connection = CONNECTION_POOL.getConnection();
 
-        String sqlOperation = "insert into Passports (number, expiredAt) values (?,?)";
+        String sqlOperation = "insert into Passports (number, expire_date) values (?,?)";
         try (
                 PreparedStatement preparedStatement
-                        = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)){
-            preparedStatement.setString(1,passport.getNumber());
+                        = connection.prepareStatement(sqlOperation, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, passport.getNumber());
             preparedStatement.setTimestamp(2, Timestamp.valueOf(passport.getExpiredAt()));
 
             preparedStatement.executeUpdate();
@@ -28,10 +29,15 @@ public class PassportJDBCRepositoryImpl implements PassportRepository {
                 passport.setId(resultSet.getLong(1));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(" Cannot create the Passport   ", e);
-        }finally {
+            throw new RuntimeException(" Cannot create the Passport   " + e.getMessage(), e);
+        } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
 
+    }
+
+    @Override
+    public List<Passport> findAll() {
+        return null;
     }
 }

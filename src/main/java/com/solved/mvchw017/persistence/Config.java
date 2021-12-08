@@ -20,16 +20,17 @@ public class Config {
         POOLSIZE = getValue("poolSize");
 
     }
-    public static String getValue(String info){
+
+    public static String getValue(String info) {
         Properties properties = new Properties();
         String pass = "src/main/resources/config.properties";
         try
-            (FileInputStream fileInputStream = new FileInputStream(pass)){
+                (FileInputStream fileInputStream = new FileInputStream(pass)) {
             properties.load(fileInputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return  properties.getProperty(info);
+        return properties.getProperty(info);
     }
 
 }

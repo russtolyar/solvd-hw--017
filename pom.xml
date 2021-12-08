@@ -11,19 +11,27 @@
 
 	<properties>
 		<log4jVersion>2.14.1</log4jVersion>
+		<mysqlVersion>8.0.27</mysqlVersion>
+		<mybatisVersion>3.5.7</mybatisVersion>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.27</version>
+			<version>${mysqlVersion}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>${log4jVersion}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatisVersion}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

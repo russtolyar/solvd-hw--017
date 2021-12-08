@@ -27,19 +27,19 @@ public class KitchenServiceImpl implements KitchenService {
     @Override
     public Kitchen create(Kitchen kitchen, Long restaurantId) {
         kitchen.setId(null);
-        kitchenRepository.create(kitchen,restaurantId);
+        kitchenRepository.create(kitchen, restaurantId);
 
         if (kitchen.getStaff() != null) {
-           List<Staff> staffList = kitchen.getStaff()
-            .stream()
-            .map(staff -> staffService.create(staff,kitchen.getId()))
-            .collect(Collectors.toList());
-           kitchen.setStaff(staffList);
+            List<Staff> staffList = kitchen.getStaff()
+                    .stream()
+                    .map(staff -> staffService.create(staff, kitchen.getId()))
+                    .collect(Collectors.toList());
+            kitchen.setStaff(staffList);
         }
         if (kitchen.getEmployees() != null) {
             List<Employee> employees = kitchen.getEmployees()
                     .stream()
-                    .map(employee -> employeeService.create(employee, employee.getPassport().getId(),employee.getAddress().getId()))
+                    .map(employee -> employeeService.create(employee))
                     .collect(Collectors.toList());
             kitchen.setEmployees(employees);
         }

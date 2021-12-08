@@ -1,11 +1,11 @@
 package com.solved.mvchw017.service.impl;
 
 import com.solved.mvchw017.domain.menu.Drink;
-import com.solved.mvchw017.domain.menu.Food;
+import com.solved.mvchw017.domain.menu.Dish;
 import com.solved.mvchw017.domain.menu.Menu;
 import com.solved.mvchw017.persistence.MenuRepository;
 import com.solved.mvchw017.persistence.impl.MenuJDBCRepositoryImpl;
-import com.solved.mvchw017.service.DishesService;
+import com.solved.mvchw017.service.DishService;
 import com.solved.mvchw017.service.DrinkService;
 import com.solved.mvchw017.service.MenuService;
 
@@ -16,13 +16,12 @@ public class MenuServiceImpl implements MenuService {
 
     private final MenuRepository menuRepository;
     private final DrinkService drinkService;
-    private final DishesService dishesService;
+    private final DishService dishService;
 
     public MenuServiceImpl() {
         this.menuRepository = new MenuJDBCRepositoryImpl();
         this.drinkService = new DrinkServiceImpl();
-        this.dishesService = new DishesServiceImpl();
-
+        this.dishService = new DishServiceImpl();
     }
 
     @Override
@@ -38,13 +37,12 @@ public class MenuServiceImpl implements MenuService {
             menu.setDrinks(drinks);
         }
         if (menu.getDishes() != null) {
-            List<Food> dishes = menu.getDishes()
+            List<Dish> dishes = menu.getDishes()
                     .stream()
-                    .map(food -> dishesService.create(food, menu.getId()))
+                    .map(dish -> dishService.create(dish, menu.getId()))
                     .collect(Collectors.toList());
             menu.setDishes(dishes);
         }
-
         return menu;
     }
 }

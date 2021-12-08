@@ -24,9 +24,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee create(Employee employee,Long passportId, Long addressId) {
+    public Employee create(Employee employee){
         employee.setId(null);
-        employeeRepository.create(employee,passportId,addressId);
 
         if (employee.getPassport() != null) {
             Passport passport = passportService.create(employee.getPassport());
@@ -36,12 +35,13 @@ public class EmployeeServiceImpl implements EmployeeService {
             Address address = addressService.create(employee.getAddress());
             employee.setAddress(address);
         }
+        employeeRepository.create(employee);
         return employee;
     }
 
     @Override
     public List<Employee> selectAll() {
-        employeeRepository.selectAll();
-        return e;
+//        employeeRepository.selectAll();
+        return null;
     }
 }
