@@ -303,49 +303,49 @@ public class MainClass {
         restaurantFalcone.setMenu(menu);
 
         restaurantFalcone.setKitchen(kitchen);
-
-        Restaurant restaurantBelaRossa = new Restaurant();
-        restaurantBelaRossa.setName("Bela Rossa");
-        restaurantBelaRossa.setDateOfFoundation(LocalDateTime.of(2020, 8, 9, 00, 00));
-        restaurantBelaRossa.setMenu(null);
-        restaurantBelaRossa.setKitchen(null);
-
-        RestaurantService restaurantService = new RestaurantServiceImpl();
-        restaurantService.create(restaurantFalcone);
-        RestaurantService restaurantService1 = new RestaurantServiceImpl();
-        restaurantService1.create(restaurantBelaRossa);
-
-        List<Dish> clientOneDish = Arrays.asList(restaurantFalcone.getMenu().getDishes().get(0),
-                restaurantFalcone.getMenu().getDishes().get(3));
-        clientOne.setDishes(clientOneDish);
-
-        List<Drink> clientOneDrink = Arrays.asList(restaurantFalcone.getMenu().getDrinks().get(2),
-                restaurantFalcone.getMenu().getDrinks().get(5));
-        clientOne.setDrinks(clientOneDrink);
-
-        List<Dish> clientTwoDish = Arrays.asList(restaurantFalcone.getMenu().getDishes().get(1),
-                restaurantFalcone.getMenu().getDishes().get(4));
-        clientOne.setDishes(clientOneDish);
-        clientTwo.setDishes(clientTwoDish);
-
-        List<Drink> clientTwoDrink = Arrays.asList(restaurantFalcone.getMenu().getDrinks().get(0),
-                restaurantFalcone.getMenu().getDrinks().get(3));
-        clientTwo.setDrinks(clientTwoDrink);
-
-
-        ClientService clientService = new ClientServiceImpl();
-        clientService.create(clientOne);
-        clientService.create(clientTwo);
-
-
-        PassportService passportService = new PassportServiceImpl();
-        System.out.println(passportService.findAll());
-
+//
+//        Restaurant restaurantBelaRossa = new Restaurant();
+//        restaurantBelaRossa.setName("Bela Rossa");
+//        restaurantBelaRossa.setDateOfFoundation(LocalDateTime.of(2020, 8, 9, 00, 00));
+//        restaurantBelaRossa.setMenu(null);
+//        restaurantBelaRossa.setKitchen(null);
+//
+//        RestaurantService restaurantService = new RestaurantServiceImpl();
+//        restaurantService.create(restaurantFalcone);
+//        RestaurantService restaurantService1 = new RestaurantServiceImpl();
+//        restaurantService1.create(restaurantBelaRossa);
+//
+//        List<Dish> clientOneDish = Arrays.asList(restaurantFalcone.getMenu().getDishes().get(0),
+//                restaurantFalcone.getMenu().getDishes().get(3));
+//        clientOne.setDishes(clientOneDish);
+//
+//        List<Drink> clientOneDrink = Arrays.asList(restaurantFalcone.getMenu().getDrinks().get(2),
+//                restaurantFalcone.getMenu().getDrinks().get(5));
+//        clientOne.setDrinks(clientOneDrink);
+//
+//        List<Dish> clientTwoDish = Arrays.asList(restaurantFalcone.getMenu().getDishes().get(1),
+//                restaurantFalcone.getMenu().getDishes().get(4));
+//        clientOne.setDishes(clientOneDish);
+//        clientTwo.setDishes(clientTwoDish);
+//
+//        List<Drink> clientTwoDrink = Arrays.asList(restaurantFalcone.getMenu().getDrinks().get(0),
+//                restaurantFalcone.getMenu().getDrinks().get(3));
+//        clientTwo.setDrinks(clientTwoDrink);
+//
+//
+//        ClientService clientService = new ClientServiceImpl();
+//        clientService.create(clientOne);
+//        clientService.create(clientTwo);
+//
+//
+//        PassportService passportService = new PassportServiceImpl();
+//        System.out.println(passportService.findAll());
+//
         EmployeeService employeeService = new EmployeeServiceImpl();
         System.out.println(employeeService.findAll());
-        System.out.println(employeeService.findWithAddress());
-           String new10 = "NewLastName";
-        System.out.println(employeeService.update(new10,employeeFour));
+//        System.out.println(employeeService.findWithAddress());
+//           String new10 = "NewLastName";
+//        System.out.println(employeeService.update(new10,employeeFour));
 
     }
 }

@@ -20,8 +20,8 @@ public class EmployeeMapperImpl implements EmployeeRepository {
     public List<Employee> findAll() {
         try (SqlSession session = MyBatisSessionHolder.getSqlSessionFactory().openSession(true)) {
             EmployeeRepository employeeRepository = session.getMapper(EmployeeRepository.class);
-//            return employeeRepository.findAll();
-            return null;
+            return employeeRepository.findAll();
+
         }
     }
 

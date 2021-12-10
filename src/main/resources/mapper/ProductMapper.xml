@@ -10,10 +10,9 @@
 
 	</insert>
 
-	<resultMap id="ProductResultMap" type="com.solved.mvchw017.domain.Product" autoMapping="false">
-		<result property="id" column="product_id"/>
-		<result property="staff_id" column="staffId"/>
-		<result property="name" column="product.name"/>
-
-	</resultMap>
+<!--	<resultMap id="ProductResultMap" type="com.solved.mvchw017.domain.Product" autoMapping="false">-->
+<!--		<id property="id" column="product_id"/>-->
+<!--		<result property="staff_id" column="staffId"/>-->
+<!--		<result property="name" column="product.name"/>-->
+<!--	</resultMap>-->
 </mapper>

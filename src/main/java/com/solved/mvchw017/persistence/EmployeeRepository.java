@@ -8,9 +8,9 @@ import java.util.List;
 public interface EmployeeRepository {
 
     void create(@Param("employee") Employee employee);
-//    ,@Param("passportId") Long passportId,@Param("addressId") Long addressId);
 
     List<Employee> findAll();
+
     List<Employee> findWithAddress();
     Employee update (String new1,Employee employee);
 
