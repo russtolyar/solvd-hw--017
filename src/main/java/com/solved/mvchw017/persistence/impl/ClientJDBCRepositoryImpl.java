@@ -1,10 +1,14 @@
 package com.solved.mvchw017.persistence.impl;
 
 import com.solved.mvchw017.domain.Client;
+import com.solved.mvchw017.domain.menu.Dish;
 import com.solved.mvchw017.persistence.ClientRepository;
 import com.solved.mvchw017.persistence.ConnectionPool;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ClientJDBCRepositoryImpl implements ClientRepository {
 
@@ -44,6 +48,7 @@ public class ClientJDBCRepositoryImpl implements ClientRepository {
         }
     }
 
+
     @Override
     public void create(Client client, Long addressId) {
 
@@ -68,4 +73,5 @@ public class ClientJDBCRepositoryImpl implements ClientRepository {
             CONNECTION_POOL.releaseConnection(connection);
         }
     }
-}
+
+    }

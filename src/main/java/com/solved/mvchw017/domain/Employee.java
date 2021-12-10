@@ -66,4 +66,17 @@ public class Employee {
     public void setPassport(Passport passport) {
         this.passport = passport;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", position='" + position + '\'' +
+                ", department='" + department + '\'' +
+                ", passport=" + passport +
+                ", address=" + address +
+                '}';
+    }
 }

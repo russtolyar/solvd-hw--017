@@ -4,11 +4,13 @@ import com.solved.mvchw017.domain.Employee;
 
 import java.util.List;
 
+
 public interface EmployeeService {
 
-    Employee create (Employee employee);
+    Employee create(Employee employee);
 
-//            ,Long passportId, Long addressId);
+    List<Employee> findAll();
+    List<Employee> findWithAddress();
+    Employee update(String new1,Employee employee);
 
-    List<Employee> selectAll();
 }

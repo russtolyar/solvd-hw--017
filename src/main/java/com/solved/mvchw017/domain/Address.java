@@ -47,4 +47,15 @@ public class Address {
     public void setNumberFlat(int numberFlat) {
         this.numberFlat = numberFlat;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", numberHouse=" + numberHouse +
+                ", numberFlat=" + numberFlat +
+                '}';
+    }
 }
