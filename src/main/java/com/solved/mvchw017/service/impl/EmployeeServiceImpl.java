@@ -5,6 +5,7 @@ import com.solved.mvchw017.domain.Employee;
 import com.solved.mvchw017.domain.Passport;
 import com.solved.mvchw017.persistence.EmployeeRepository;
 import com.solved.mvchw017.persistence.impl.EmployeeJDBCRepositoryImpl;
+import com.solved.mvchw017.persistence.impl.EmployeeMapperImpl;
 import com.solved.mvchw017.service.AddressService;
 import com.solved.mvchw017.service.EmployeeService;
 import com.solved.mvchw017.service.PassportService;
@@ -19,7 +20,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final AddressService addressService;
 
     public EmployeeServiceImpl() {
-        this.employeeRepository = new EmployeeJDBCRepositoryImpl();
+//        this.employeeRepository = new EmployeeJDBCRepositoryImpl();
+        this.employeeRepository = new EmployeeMapperImpl();
         this.passportService = new PassportServiceImpl();
         this.addressService = new AddressServiceImpl();
     }

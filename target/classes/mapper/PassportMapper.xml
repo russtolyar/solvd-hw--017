@@ -10,22 +10,9 @@
 		insert into Passports (number, expiredAt) values (#{number},#{expiredAt})
 	</insert>
 
-	<select id="findAll" resultMap="">
-		select
-p.id as passport_id p.number as passport_number p.expire_date as passport_date_expire e.id as employee_id
-		e.name as employee_name k.id as kitchen_id from Passports p left join Employees e
-on p.id = e.passport_id
-left join Kitchen_employees ke
-on e.id = ke.employee_id
-left join Kitchens k
-on k.id = ke.kitchen_id
-
-	</select>
-	
 	<resultMap id="PassportResultMap" type="com.solved.mvchw017.domain.Passport" autoMapping="false">
 		<id property="id" column="passport_id"/>
 		<result property="number" column="passport_number"/>
-		<result property="expire_date" column="passport_date_expire"/>
-<!--		<association property="employee"-->
+		<result property="expiredAt" column="passport_date_expire"/>
 	</resultMap>
 </mapper>

@@ -7,17 +7,23 @@
 <mapper namespace="com.solved.mvchw017.persistence.EmployeeRepository">
 
 	<insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
-		insert into Employees (passport_id, address_id, first_name, last_name, position, department)
-		values (#{passportId}, ${addressId}, ${employee.first_name}, ${employee.last_name}, ${employee.position},
-		        ${employee.department})
+		insert into Employees (first_name, last_name, position, department)
+		values (${employee.name}, ${employee.lastName}, ${employee.position}, ${employee.department})
 	</insert>
 
-	<select id="findAll" resultMap="">
+	<select id="findAll" resultMap="EmployeeResultMap">
 
-		select p.id as passport_id p.number as passport_number
-		p.expire_date as passport_date_expire e.id as employee_id
-		e.name as employee_name k.id as kitchen_id
-		a.city as address_city
+		select p.id          as passport_id,
+		       p.number      as passport_number,
+		       p.expire_date as passport_date_expire,
+		       e.id          as employee_id,
+		       e.first_name  as employee_name,
+		       e.last_name   as employee_last_name,
+		       e.position    as employee_position,
+		       e.department  as employee_department,
+		       k.id          as kitchen_id,
+		       a.city        as address_city,
+		       a.street      as address_street
 		from Passports p
 			     left join Employees e
 			               on p.id = e.passport_id
@@ -25,38 +31,26 @@
 			               on e.id = ke.employee_id
 			     left join Kitchens k
 			               on k.id = ke.kitchen_id
-			     right join Address absolute
-		on a.id = e.address_id
+			     left join Addresses a
+			               on a.id = e.address_id
+
 
 	</select>
 
-	<resultMap id="EmployeeResultMap" type="com.solved.mvchw017.domaim.Employee" autoMapping="false">
-		<result property="id" column="employee_id"/>
-		<result property="passport_id" column="passportId"/>
-		<result property="address_id" column="addressId"/>
-		<result property="first_name" column="employee.first_name"/>
-		<result property="last_name" column="employee.last_name"/>
-		<result property="position" column="employee.position"/>
-		<result property="department" column="employee.department"/>
-<association property="passport" resultMap="com.solved.mvchw017.persistence.PassportRepository.PassportResultMap"/>
+	<resultMap id="EmployeeResultMap" type="com.solved.mvchw017.domain.Employee" autoMapping="false">
+		<id property="id" column="employee_id"/>
+		<result property="name" column="employee_name"/>
+		<result property="lastName" column="employee_last_name"/>
+		<result property="position" column="employee_position"/>
+		<result property="department" column="employee_department"/>
+
+		<association property="passport"
+		             resultMap="com.solved.mvchw017.persistence.PassportRepository.PassportResultMap"/>
+		<association property="address"
+		             resultMap="com.solved.mvchw017.persistence.AddressRepository.AddressResultMap"/>
+		<!--		<association property="kitchen"-->
+		<!--		             resultMap="com.solved.mvchw017.persistence.KitchenRepository.KitchenResultMap"/>-->
 
 	</resultMap>
 
-	<!--	<select id="findAll" resultMap="">-->
-	<!--		select-->
-	<!--			p.id as passport_ID p.number as passport_number p.expire_date as passport_date_expire e.id as employee_ID-->
-	<!--		e.name as employee_name k.id as kitchen_id from Passports p left join Employees e-->
-	<!--			                                                                                              on p.id = e.passport_id-->
-	<!--		                                                            left join Kitchen_employees ke-->
-	<!--		                                                                      on e.id = ke.employee_id-->
-	<!--		                                                            left join Kitchens k-->
-	<!--		                                                                      on k.id = ke.kitchen_id-->
-
-	<!--	</select>-->
-
-	<!--	<resultMap id="PassportResultMap" type="com/solved/mvchw017/domain/Passport.java" autoMapping="false">-->
-	<!--		<id property="id" column="passport_ID"/>-->
-	<!--		<result property="number" column="passport_number"/>-->
-	<!--		<result property="expire_date" column="passport_date_expire"/>-->
-	<!--	</resultMap>-->
 </mapper>

@@ -3,9 +3,15 @@
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.solved.mvchw017.persistence.PassportRepository">
+<mapper namespace="com.solved.mvchw017.persistence.StaffRepository">
 
-	<insert id="create" keyColumn="staff.id" keyProperty="id" useGeneratedKeys="true">
+	<insert id="create" keyColumn="staff.id" keyProperty="staff.id" useGeneratedKeys="true">
 		insert into Staff (kitchen_id,name, type) values (#{kitchenId},${staff.name},${staff.type})
 	</insert>
+<!--	<resultMap id="StaffResultMap" type="com.solved.mvchw017.domain.department.Staff" autoMapping="false">-->
+<!--		<id property="id" column="staff_id"/>-->
+<!--		<result property="name" column="staff.name"/>-->
+<!--		<result property="type" column="staff.type"/>-->
+<!--	</resultMap>-->
+
 </mapper>
