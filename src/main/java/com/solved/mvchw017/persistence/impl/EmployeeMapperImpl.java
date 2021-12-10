@@ -20,7 +20,18 @@ public class EmployeeMapperImpl implements EmployeeRepository {
     public List<Employee> findAll() {
         try (SqlSession session = MyBatisSessionHolder.getSqlSessionFactory().openSession(true)) {
             EmployeeRepository employeeRepository = session.getMapper(EmployeeRepository.class);
-            return employeeRepository.findAll();
+//            return employeeRepository.findAll();
+            return null;
         }
+    }
+
+    @Override
+    public List<Employee> findWithAddress() {
+        return null;
+    }
+
+    @Override
+    public Employee update(String new1,Employee employee) {
+        return null;
     }
 }

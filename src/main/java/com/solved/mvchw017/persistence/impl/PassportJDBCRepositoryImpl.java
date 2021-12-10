@@ -5,6 +5,9 @@ import com.solved.mvchw017.persistence.ConnectionPool;
 import com.solved.mvchw017.persistence.PassportRepository;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PassportJDBCRepositoryImpl implements PassportRepository {
@@ -38,6 +41,28 @@ public class PassportJDBCRepositoryImpl implements PassportRepository {
 
     @Override
     public List<Passport> findAll() {
-        return null;
+        Connection connection = CONNECTION_POOL.getConnection();
+
+        String sqlOperation = "select * from Passports";
+        List<Passport> passportsFindAll = new ArrayList<>();
+        try (
+                PreparedStatement preparedStatement
+                        = connection.prepareStatement(sqlOperation)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                Passport passport = new Passport();
+                passport.setId(resultSet.getLong("id"));
+                passport.setNumber(resultSet.getString("number"));
+                passport.setExpiredAt((resultSet.getDate("expire_date")).toLocalDate().atStartOfDay());
+                System.out.println(passport);
+
+                passportsFindAll.add(passport);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return passportsFindAll;
+
+        }
     }
-}

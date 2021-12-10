@@ -11,6 +11,7 @@ import com.solved.mvchw017.service.PassportService;
 
 import java.util.List;
 
+
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
@@ -24,7 +25,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee create(Employee employee){
+    public Employee create(Employee employee) {
         employee.setId(null);
 
         if (employee.getPassport() != null) {
@@ -40,8 +41,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> selectAll() {
-//        employeeRepository.selectAll();
-        return null;
+    public List<Employee> findAll() {
+        return employeeRepository.findAll();
     }
+
+    @Override
+    public List<Employee> findWithAddress() {
+        return employeeRepository.findWithAddress();
+    }
+
+    @Override
+    public Employee update(String new1,Employee employee) {
+       return employeeRepository.update(new1,employee);
+    }
+
+
 }

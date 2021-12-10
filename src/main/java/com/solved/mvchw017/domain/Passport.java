@@ -32,4 +32,12 @@ public class Passport {
         this.expiredAt = expiredAt;
     }
 
+    @Override
+    public String toString() {
+        return "Passport{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                ", expiredAt=" + expiredAt +
+                '}';
+    }
 }

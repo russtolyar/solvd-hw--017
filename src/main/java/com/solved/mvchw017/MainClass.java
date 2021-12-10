@@ -164,31 +164,31 @@ public class MainClass {
         menu.setDrinks(drinksMenu);
 
         Passport passportOne = new Passport();
-        passportOne.setNumber("1001" + UUID.randomUUID());
+        passportOne.setNumber("1001 " + UUID.randomUUID());
         passportOne.setExpiredAt(LocalDateTime.of(2000, 11, 11, 00, 00));
 
         Passport passportTwo = new Passport();
-        passportTwo.setNumber("1002" + UUID.randomUUID());
+        passportTwo.setNumber("1002 " + UUID.randomUUID());
         passportTwo.setExpiredAt(LocalDateTime.of(2026, 05, 02, 00, 00));
 
         Passport passportThree = new Passport();
-        passportThree.setNumber("1003" + UUID.randomUUID());
+        passportThree.setNumber("1003 " + UUID.randomUUID());
         passportThree.setExpiredAt(LocalDateTime.of(2027, 8, 20, 00, 00));
 
         Passport passportFour = new Passport();
-        passportFour.setNumber("1004" + UUID.randomUUID());
+        passportFour.setNumber("1004  " + UUID.randomUUID());
         passportFour.setExpiredAt(LocalDateTime.of(2028, 7, 14, 00, 00));
 
         Passport passportFive = new Passport();
-        passportFive.setNumber("1005" + UUID.randomUUID());
+        passportFive.setNumber("1005 " + UUID.randomUUID());
         passportFive.setExpiredAt(LocalDateTime.of(2029, 3, 15, 0, 0));
 
         Passport passportSix = new Passport();
-        passportSix.setNumber("1006" + UUID.randomUUID());
+        passportSix.setNumber("1006 " + UUID.randomUUID());
         passportSix.setExpiredAt(LocalDateTime.of(2022, 10, 29, 0, 0));
 
         Passport passportSeven = new Passport();
-        passportSeven.setNumber("1007" + UUID.randomUUID());
+        passportSeven.setNumber("1007 " + UUID.randomUUID());
         passportSeven.setExpiredAt(LocalDateTime.of(2023, 11, 30, 00, 00));
 
         Employee employeeOne = new Employee();
@@ -336,6 +336,16 @@ public class MainClass {
         ClientService clientService = new ClientServiceImpl();
         clientService.create(clientOne);
         clientService.create(clientTwo);
+
+
+        PassportService passportService = new PassportServiceImpl();
+        System.out.println(passportService.findAll());
+
+        EmployeeService employeeService = new EmployeeServiceImpl();
+        System.out.println(employeeService.findAll());
+        System.out.println(employeeService.findWithAddress());
+           String new10 = "NewLastName";
+        System.out.println(employeeService.update(new10,employeeFour));
 
     }
 }
