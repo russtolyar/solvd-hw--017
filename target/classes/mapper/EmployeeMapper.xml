@@ -21,18 +21,15 @@
 		       e.last_name   as employee_last_name,
 		       e.position    as employee_position,
 		       e.department  as employee_department,
-		       k.id          as kitchen_id,
+		       a.id          as address_id,
 		       a.city        as address_city,
 		       a.street      as address_street
 		from Passports p
 			     left join Employees e
 			               on p.id = e.passport_id
-			     left join Kitchen_employees ke
-			               on e.id = ke.employee_id
-			     left join Kitchens k
-			               on k.id = ke.kitchen_id
-			     left join Addresses a
+					     left join Addresses a
 			               on a.id = e.address_id
+where a.city like 'M%'
 
 
 	</select>
@@ -45,12 +42,30 @@
 		<result property="department" column="employee_department"/>
 
 		<association property="passport"
-		             resultMap="com.solved.mvchw017.persistence.PassportRepository.PassportResultMap"/>
+		             resultMap="PassportResultMap"/>
 		<association property="address"
-		             resultMap="com.solved.mvchw017.persistence.AddressRepository.AddressResultMap"/>
-		<!--		<association property="kitchen"-->
-		<!--		             resultMap="com.solved.mvchw017.persistence.KitchenRepository.KitchenResultMap"/>-->
-
+		             resultMap="AddressResultMap"/>
+<!--				<association property="kitchen"-->
+<!--				             resultMap="KitchenResultMap"/>-->
 	</resultMap>
+
+		<resultMap id="PassportResultMap" type="com.solved.mvchw017.domain.Passport" autoMapping="false">
+			<id property="id" column="passport_id"/>
+			<result property="number" column="passport_number"/>
+			<result property="expiredAt" column="passport_date_expire"/>
+		</resultMap>
+
+	<resultMap id="AddressResultMap" type="com.solved.mvchw017.domain.Address" autoMapping="false">
+		<result property="id" column="address_id"/>
+		<result property="city" column="address_city"/>
+		<result property="street" column="address_street"/>
+		<result property="house" column="address_house"/>
+		<result property="flat" column="address_flat"/>
+	</resultMap>
+
+<!--	<resultMap id="KitchenResultMap" type="com.solved.mvchw017.domain.department.Kitchen" autoMapping="false">-->
+<!--		<result property="id" column="kitchen_id"/>-->
+<!--		<result property="restaurant_id" column="restaurantId"/>-->
+<!--	</resultMap>-->
 
 </mapper>
