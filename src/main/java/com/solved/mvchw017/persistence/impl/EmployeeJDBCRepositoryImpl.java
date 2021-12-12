@@ -10,10 +10,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.solved.mvchw017.persistence.ConnectionPool.getInstance;
+
 
 public class EmployeeJDBCRepositoryImpl implements EmployeeRepository {
 
-    private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
+    private static final ConnectionPool CONNECTION_POOL = getInstance();
 
     @Override
     public void create(Employee employee) {
@@ -47,8 +49,9 @@ public class EmployeeJDBCRepositoryImpl implements EmployeeRepository {
     public List<Employee> findAll() {
         Connection connection = CONNECTION_POOL.getConnection();
 
-        String sqlOperation = "Select e.id, e.first_name, e.last_name, e.position, e.department," +
-                " p.id, p.number from Employees e right join  Passports p " +
+        String sqlOperation =
+                "Select e.id as employee_ID, e.first_name, e.last_name, e.position, e.department," +
+                " p.id as passport_ID, p.number from Employees e right join  Passports p " +
                 "on p.id = e.passport_id ";
 
         List<Employee> employeesFindAll = new ArrayList<>();
@@ -58,14 +61,14 @@ public class EmployeeJDBCRepositoryImpl implements EmployeeRepository {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Employee employee = new Employee();
-                employee.setId(resultSet.getLong("id"));
+                employee.setId(resultSet.getLong("employee_ID"));
                 employee.setName(resultSet.getString("first_name"));
                 employee.setLastName(resultSet.getString("last_name"));
                 employee.setPosition(resultSet.getString("position"));
                 employee.setDepartment(resultSet.getString("department"));
 
                 Passport passport = new Passport();
-                passport.setId(resultSet.getLong("id"));
+                passport.setId(resultSet.getLong("passport_ID"));
                 passport.setNumber(resultSet.getString("number"));
                 employee.setPassport(passport);
 

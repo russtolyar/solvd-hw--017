@@ -10,9 +10,9 @@
 		insert into Passports (number, expiredAt) values (#{number},#{expiredAt})
 	</insert>
 
-	<resultMap id="PassportResultMap" type="com.solved.mvchw017.domain.Passport" autoMapping="false">
-		<id property="id" column="passport_id"/>
-		<result property="number" column="passport_number"/>
-		<result property="expiredAt" column="passport_date_expire"/>
-	</resultMap>
+<!--	<resultMap id="PassportResultMap" type="com.solved.mvchw017.domain.Passport" autoMapping="false">-->
+<!--		<id property="id" column="passport_id"/>-->
+<!--		<result property="number" column="passport_number"/>-->
+<!--		<result property="expiredAt" column="passport_date_expire"/>-->
+<!--	</resultMap>-->
 </mapper>
