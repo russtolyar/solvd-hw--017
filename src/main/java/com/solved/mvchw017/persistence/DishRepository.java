@@ -4,5 +4,6 @@ import com.solved.mvchw017.domain.menu.Dish;
 
 public interface DishRepository {
 
-    void create (Dish dish, Long menuId);
+    Long create (Dish dish, Long menuId);
+    Dish findById (Long id);
 }

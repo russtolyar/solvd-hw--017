@@ -6,7 +6,8 @@
 <mapper namespace="com.solved.mvchw017.persistence.AddressRepository">
 
 	<insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
-		insert into Addresses(city, street, house, flat) values(${city},${street},${house},${flat})
+		insert into Addresses(city, street, house, flat)
+		values (${city}, ${street}, ${house}, ${flat})
 
 	</insert>
 

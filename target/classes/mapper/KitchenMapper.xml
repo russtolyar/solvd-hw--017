@@ -6,7 +6,8 @@
 <mapper namespace="com.solved.mvchw017.persistence.KitchenRepository">
 
 	<insert id="create" keyColumn="kitchen.id" keyProperty="id" useGeneratedKeys="true">
-		insert into Kitchens (restaurant_id) values (${restaurantId})
+		insert into Kitchens (restaurant_id)
+		values (${restaurantId})
 
 	</insert>
 
@@ -14,5 +15,6 @@
 <!--		<result property="id" column="kitchen_id"/>-->
 <!--		<result property="restaurant_id" column="restaurantId"/>-->
 <!--	</resultMap>-->
+
 
 </mapper>

@@ -18,4 +18,19 @@ public class AddressServiceImpl implements AddressService {
         addressRepository.create(address);
         return address;
     }
+
+    @Override
+    public void delete(Address address) {
+        addressRepository.delete(address);
+    }
+
+    @Override
+    public Address select(Address address) {
+        return addressRepository.select(address);
+    }
+
+    @Override
+    public void update(Address address, Address addressNew) {
+        addressRepository.update(address, addressNew);
+    }
 }

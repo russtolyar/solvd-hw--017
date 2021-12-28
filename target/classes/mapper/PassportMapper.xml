@@ -7,7 +7,8 @@
 <mapper namespace="com.solved.mvchw017.persistence.PassportRepository">
 
 	<insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
-		insert into Passports (number, expiredAt) values (#{number},#{expiredAt})
+		insert into Passports (number, expiredAt)
+		values (#{number}, #{expiredAt})
 	</insert>
 
 <!--	<resultMap id="PassportResultMap" type="com.solved.mvchw017.domain.Passport" autoMapping="false">-->
@@ -15,4 +16,5 @@
 <!--		<result property="number" column="passport_number"/>-->
 <!--		<result property="expiredAt" column="passport_date_expire"/>-->
 <!--	</resultMap>-->
+
 </mapper>

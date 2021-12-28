@@ -4,5 +4,8 @@ import com.solved.mvchw017.domain.Address;
 
 public interface AddressRepository {
 
-    void create (Address address);
+    Address create (Address address);
+     void delete(Address address);
+     Address select(Address address);
+     void update(Address address, Address addressNew);
 }

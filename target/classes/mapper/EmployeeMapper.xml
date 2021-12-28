@@ -45,8 +45,7 @@ where a.city like 'M%'
 		             resultMap="PassportResultMap"/>
 		<association property="address"
 		             resultMap="AddressResultMap"/>
-<!--				<association property="kitchen"-->
-<!--				             resultMap="KitchenResultMap"/>-->
+
 	</resultMap>
 
 		<resultMap id="PassportResultMap" type="com.solved.mvchw017.domain.Passport" autoMapping="false">
