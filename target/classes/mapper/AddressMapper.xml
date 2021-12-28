@@ -6,16 +6,17 @@
 <mapper namespace="com.solved.mvchw017.persistence.AddressRepository">
 
 	<insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
-		insert into Addresses(city, street, house, flat) values(${city},${street},${house},${flat})
+		insert into Addresses(city, street, house, flat)
+		values (${city}, ${street}, ${house}, ${flat})
 
 	</insert>
 
-<!--	<resultMap id="AddressResultMap" type="com.solved.mvchw017.domain.Address" autoMapping="false">-->
-<!--		<result property="id" column="address_id"/>-->
-<!--		<result property="city" column="address_city"/>-->
-<!--		<result property="street" column="address_street"/>-->
-<!--		<result property="house" column="address_house"/>-->
-<!--		<result property="flat" column="address_flat"/>-->
-<!--	</resultMap>-->
+	<!--	<resultMap id="AddressResultMap" type="com.solved.mvchw017.domain.Address" autoMapping="false">-->
+	<!--		<result property="id" column="address_id"/>-->
+	<!--		<result property="city" column="address_city"/>-->
+	<!--		<result property="street" column="address_street"/>-->
+	<!--		<result property="house" column="address_house"/>-->
+	<!--		<result property="flat" column="address_flat"/>-->
+	<!--	</resultMap>-->
 
 </mapper>

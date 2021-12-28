@@ -45,8 +45,6 @@ where a.city like 'M%'
 		             resultMap="PassportResultMap"/>
 		<association property="address"
 		             resultMap="AddressResultMap"/>
-<!--				<association property="kitchen"-->
-<!--				             resultMap="KitchenResultMap"/>-->
 	</resultMap>
 
 		<resultMap id="PassportResultMap" type="com.solved.mvchw017.domain.Passport" autoMapping="false">
@@ -62,10 +60,5 @@ where a.city like 'M%'
 		<result property="house" column="address_house"/>
 		<result property="flat" column="address_flat"/>
 	</resultMap>
-
-<!--	<resultMap id="KitchenResultMap" type="com.solved.mvchw017.domain.department.Kitchen" autoMapping="false">-->
-<!--		<result property="id" column="kitchen_id"/>-->
-<!--		<result property="restaurant_id" column="restaurantId"/>-->
-<!--	</resultMap>-->
 
 </mapper>

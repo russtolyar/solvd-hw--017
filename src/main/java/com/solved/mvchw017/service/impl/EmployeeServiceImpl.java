@@ -20,8 +20,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final AddressService addressService;
 
     public EmployeeServiceImpl() {
-//        this.employeeRepository = new EmployeeJDBCRepositoryImpl();
-        this.employeeRepository = new EmployeeMapperImpl();
+        this.employeeRepository = new EmployeeJDBCRepositoryImpl();
+//        this.employeeRepository = new EmployeeMapperImpl();
         this.passportService = new PassportServiceImpl();
         this.addressService = new AddressServiceImpl();
     }
