@@ -11,9 +11,9 @@
 
 	</insert>
 
-	<!--	<resultMap id="KitchenResultMap" type="com.solved.mvchw017.domain.department.Kitchen" autoMapping="false">-->
-	<!--		<result property="id" column="kitchen_id"/>-->
-	<!--		<result property="restaurant_id" column="restaurantId"/>-->
-	<!--	</resultMap>-->
+		<resultMap id="KitchenResultMap" type="com.solved.mvchw017.domain.department.Kitchen" autoMapping="false">
+			<result property="id" column="kitchen_id"/>
+			<result property="restaurant_id" column="restaurantId"/>
+		</resultMap>
 
 </mapper>
