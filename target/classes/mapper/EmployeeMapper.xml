@@ -45,6 +45,23 @@ where a.city like 'M%'
 		             resultMap="PassportResultMap"/>
 		<association property="address"
 		             resultMap="AddressResultMap"/>
+<<<<<<< HEAD
+	</resultMap>
+
+		<resultMap id="PassportResultMap" type="com.solved.mvchw017.domain.Passport" autoMapping="false">
+			<id property="id" column="passport_id"/>
+			<result property="number" column="passport_number"/>
+			<result property="expiredAt" column="passport_date_expire"/>
+		</resultMap>
+=======
+>>>>>>> ae9e630fa39f33f919cdc3204bd3c92c966bc6c9
+
+	<resultMap id="AddressResultMap" type="com.solved.mvchw017.domain.Address" autoMapping="false">
+		<result property="id" column="address_id"/>
+		<result property="city" column="address_city"/>
+		<result property="street" column="address_street"/>
+		<result property="house" column="address_house"/>
+		<result property="flat" column="address_flat"/>
 	</resultMap>
 
 		<resultMap id="PassportResultMap" type="com.solved.mvchw017.domain.Passport" autoMapping="false">
@@ -60,5 +77,10 @@ where a.city like 'M%'
 		<result property="house" column="address_house"/>
 		<result property="flat" column="address_flat"/>
 	</resultMap>
+
+<!--	<resultMap id="KitchenResultMap" type="com.solved.mvchw017.domain.department.Kitchen" autoMapping="false">-->
+<!--		<result property="id" column="kitchen_id"/>-->
+<!--		<result property="restaurant_id" column="restaurantId"/>-->
+<!--	</resultMap>-->
 
 </mapper>

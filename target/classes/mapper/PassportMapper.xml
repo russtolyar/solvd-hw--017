@@ -11,9 +11,18 @@
 		values (#{number}, #{expiredAt})
 	</insert>
 
+<<<<<<< HEAD
 	<!--	<resultMap id="PassportResultMap" type="com.solved.mvchw017.domain.Passport" autoMapping="false">-->
 	<!--		<id property="id" column="passport_id"/>-->
 	<!--		<result property="number" column="passport_number"/>-->
 	<!--		<result property="expiredAt" column="passport_date_expire"/>-->
 	<!--	</resultMap>-->
+=======
+<!--	<resultMap id="PassportResultMap" type="com.solved.mvchw017.domain.Passport" autoMapping="false">-->
+<!--		<id property="id" column="passport_id"/>-->
+<!--		<result property="number" column="passport_number"/>-->
+<!--		<result property="expiredAt" column="passport_date_expire"/>-->
+<!--	</resultMap>-->
+
+>>>>>>> ae9e630fa39f33f919cdc3204bd3c92c966bc6c9
 </mapper>

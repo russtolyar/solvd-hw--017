@@ -11,9 +11,17 @@
 
 	</insert>
 
+<<<<<<< HEAD
 	<!--	<resultMap id="KitchenResultMap" type="com.solved.mvchw017.domain.department.Kitchen" autoMapping="false">-->
 	<!--		<result property="id" column="kitchen_id"/>-->
 	<!--		<result property="restaurant_id" column="restaurantId"/>-->
 	<!--	</resultMap>-->
+=======
+<!--	<resultMap id="KitchenResultMap" type="com.solved.mvchw017.domain.department.Kitchen" autoMapping="false">-->
+<!--		<result property="id" column="kitchen_id"/>-->
+<!--		<result property="restaurant_id" column="restaurantId"/>-->
+<!--	</resultMap>-->
+
+>>>>>>> ae9e630fa39f33f919cdc3204bd3c92c966bc6c9
 
 </mapper>
