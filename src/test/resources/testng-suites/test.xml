@@ -1,0 +1,56 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="AddressesDBTest" verbose="1">
+	<test name="AddressCreatDeleteTest">
+		<classes>
+			<class name="com.solved.mvchw017.persistance.impl.AddressesRepositoryTest">
+				<methods>
+					<include name="addressCreationTest"/>
+					<include name="addressDeletionTest"/>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="AddressesCreatDeleteInGroup">
+		<groups>
+			<run>
+				<include name="create.delete"/>
+			</run>
+		</groups>
+		<classes>
+			<class name="com.solved.mvchw017.persistance.impl.AddressesRepositoryTest">
+			</class>
+		</classes>
+	</test>
+
+	<test name="AddressesCreatUpdate">
+		<classes>
+			<class name="com.solved.mvchw017.persistance.impl.AddressesRepositoryTest">
+				<methods>
+					<include name="addressCreationTest"/>
+					<include name="addressUpdatingTest"/>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+
+</suite>
+
+
+		<!--<!DOCTYPE/>-->
+		<!--		<suite parallel="methods">-->
+		<!--		<test name="Regression1">-->
+		<!--		<classes>-->
+		<!--		<class name="com/solved/mvchw017/persistance/impl/DishJDBCRepositoryImplTest.java">-->
+		<!--		<methods>-->
+		<!--		<include name="create"/>-->
+		<!--&lt;!&ndash;		<exclude name="create"/>&ndash;&gt;-->
+		<!--		</methods>-->
+		<!--		</class>-->
+		<!--		</classes>-->
+		<!--		</test>-->
+		<!--		<test name="Another">-->
+		<!--		</test>-->
+		<!--		</suite>-->

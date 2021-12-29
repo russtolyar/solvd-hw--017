@@ -45,7 +45,27 @@ where a.city like 'M%'
 		             resultMap="PassportResultMap"/>
 		<association property="address"
 		             resultMap="AddressResultMap"/>
+<<<<<<< HEAD
+<<<<<<< HEAD
+	</resultMap>
 
+		<resultMap id="PassportResultMap" type="com.solved.mvchw017.domain.Passport" autoMapping="false">
+			<id property="id" column="passport_id"/>
+			<result property="number" column="passport_number"/>
+			<result property="expiredAt" column="passport_date_expire"/>
+		</resultMap>
+=======
+>>>>>>> ae9e630fa39f33f919cdc3204bd3c92c966bc6c9
+
+	<resultMap id="AddressResultMap" type="com.solved.mvchw017.domain.Address" autoMapping="false">
+		<result property="id" column="address_id"/>
+		<result property="city" column="address_city"/>
+		<result property="street" column="address_street"/>
+		<result property="house" column="address_house"/>
+		<result property="flat" column="address_flat"/>
+=======
+
+>>>>>>> b415504214a34d2f6754d43e6bb6e34889a2c4c2
 	</resultMap>
 
 		<resultMap id="PassportResultMap" type="com.solved.mvchw017.domain.Passport" autoMapping="false">
