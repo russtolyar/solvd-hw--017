@@ -5,6 +5,7 @@ import com.solved.mvchw017.persistence.impl.AddressJDBCRepositoryImpl;
 import com.solved.mvchw017.service.AddressService;
 import com.solved.mvchw017.service.impl.AddressServiceImpl;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -37,10 +38,10 @@ public class AddressesRepositoryTest {
     @Test
             (testName = " Creation Address in db",
                     description = " Address created in db",
-            dataProvider = "addressRepositoryTest",
+                    dataProvider = "addressRepositoryTest",
                     groups = {"create.delete"})
     public void addressCreationTest(Address address) {
-        AddressJDBCRepositoryImpl  addressJDBCRepository = new AddressJDBCRepositoryImpl();
+        AddressJDBCRepositoryImpl addressJDBCRepository = new AddressJDBCRepositoryImpl();
 
         Address address1 = addressJDBCRepository.create(address);
         addressService.create(address);
@@ -50,6 +51,7 @@ public class AddressesRepositoryTest {
         Assert.assertEquals(address1.getStreet(), addressSelected.getStreet());
         Assert.assertEquals(address1.getNumberHouse(), addressSelected.getNumberHouse());
         Assert.assertEquals(address1.getNumberFlat(), addressSelected.getNumberFlat());
+        Assert.assertNotNull(addressSelected.getId());
 
     }
 
