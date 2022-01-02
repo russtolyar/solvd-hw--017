@@ -4,12 +4,18 @@ import com.solved.mvchw017.domain.Address;
 import com.solved.mvchw017.persistence.impl.AddressJDBCRepositoryImpl;
 import com.solved.mvchw017.service.AddressService;
 import com.solved.mvchw017.service.impl.AddressServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class AddressesRepositoryTest {
+
+    private static final Logger LOGGER = LogManager.getLogger(AddressesRepositoryTest.class);
     private final AddressService addressService;
 
     public AddressesRepositoryTest() {
@@ -33,7 +39,10 @@ public class AddressesRepositoryTest {
                 {addressOne},
                 {addressTwo}};
     }
-
+@BeforeTest
+public void beforeMethod(){
+    LOGGER.debug("\n\nНачало проверки репозитория адресов");
+}
 
     @Test
             (testName = " Creation Address in db",
@@ -104,5 +113,10 @@ public class AddressesRepositoryTest {
 
     private Address addressSelect(Address address) {
         return addressService.select(address);
+    }
+
+    @AfterTest
+    public  void afterTest(){
+        LOGGER.debug("\nТест репозитория завершен");
     }
 }
