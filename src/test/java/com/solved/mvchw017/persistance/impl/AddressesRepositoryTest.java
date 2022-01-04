@@ -1,6 +1,7 @@
 package com.solved.mvchw017.persistance.impl;
 
 import com.solved.mvchw017.domain.Address;
+import com.solved.mvchw017.persistence.AddressRepository;
 import com.solved.mvchw017.persistence.impl.AddressJDBCRepositoryImpl;
 import com.solved.mvchw017.service.AddressService;
 import com.solved.mvchw017.service.impl.AddressServiceImpl;
@@ -8,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
+
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -19,6 +21,11 @@ public class AddressesRepositoryTest {
 
     public AddressesRepositoryTest() {
         this.addressService = new AddressServiceImpl();
+    }
+
+    @BeforeTest
+    public void beforeMethod() {
+        LOGGER.debug("\n\nНачало проверки репозитория адресов");
     }
 
     @DataProvider(name = "addressRepositoryTest")
@@ -38,20 +45,15 @@ public class AddressesRepositoryTest {
                 {addressOne},
                 {addressTwo}};
     }
-@BeforeTest
-public void beforeMethod(){
-    LOGGER.debug("\n\nНачало проверки репозитория адресов");
-}
 
-    @Test
-            (testName = " Creation Address in db",
-                    description = " Address created in db",
-                    dataProvider = "addressRepositoryTest",
-                    groups = {"create.delete"})
+    @Test(testName = " Creation Address in db",
+            description = " Address created in db",
+            dataProvider = "addressRepositoryTest",
+            groups = {"create.delete"})
     public void addressCreationTest(Address address) {
-        AddressJDBCRepositoryImpl addressJDBCRepository = new AddressJDBCRepositoryImpl();
+        AddressRepository addressRepository = new AddressJDBCRepositoryImpl();
 
-        Address address1 = addressJDBCRepository.create(address);
+        Address address1 = addressRepository.create(address);
         addressService.create(address);
         Address addressSelected = addressSelect(address);
 
@@ -62,7 +64,6 @@ public void beforeMethod(){
         Assert.assertNotNull(addressSelected.getId());
 
     }
-
 
     @Test(testName = " Selection Address in db",
             description = "Address selected in db",
@@ -115,7 +116,7 @@ public void beforeMethod(){
     }
 
     @AfterTest
-    public  void afterTest(){
+    public void afterTest() {
         LOGGER.debug("\nТест репозитория завершен");
     }
 }
